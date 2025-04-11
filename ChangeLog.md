@@ -1,4 +1,6 @@
 %% Change Log
+%% ver 0.23 ## March 31st, 2025
+%% No parentheses inside \qt@no in the Quran text script file.
 %% ver 0.22 ## Sep 17th, 2023
 %% better adjustment of \qt@par
 %% use current font in \showitems macro
