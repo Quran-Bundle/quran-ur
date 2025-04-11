@@ -32,6 +32,7 @@ clean:
 dev:
 	cd tex || exit
 	sudo cp -v *.def quran-ur.sty /usr/local/texlive/2025/texmf-dist/tex/latex/quran-ur
+	sudo mktexlsr
 
 
 .PHONY: ctan
