@@ -53,6 +53,13 @@ ctan:
 	rm -rfv ../quran-ur
 	mv -fv quran-ur ..
 
+# Same content as `ctan` (whose zip is kept for ctan.org), packed with maximum compression for archiving.
+ARCHIVE = quran-ur-v$(QURANVERSION)-$(subst /,,$(QURANDATE)).tar.xz
+.PHONY: ctan-archive
+ctan-archive: ctan
+	tar -C .. --transform 's,^quran-ur,$(ARCHIVE:.tar.xz=),' -cf - quran-ur | xz -9e -T0 > ../$(ARCHIVE)
+	@echo "Created ../$(ARCHIVE)"
+
 QURANDATE := $(shell grep "quranurdate{" tex/quran-ur.sty | cut -d'{' -f2 | tr -d '}')
 QURANVERSION := $(shell grep "quranurversion{" tex/quran-ur.sty | cut -d'{' -f2 | tr -d '}')
 YEAR := "$(shell echo ${QURANDATE} | cut -d'/' -f1)"
